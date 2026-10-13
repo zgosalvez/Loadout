@@ -167,6 +167,7 @@ struct ProfileEditor: View {
     @EnvironmentObject private var applier: ProfileApplier
 
     @State private var showingDockPicker = false
+    @State private var showingSuggestions = false
     @State private var wallpaperDropTargeted = false
 
     private var isActive: Bool { applier.activeProfileID == profile.id }
@@ -203,6 +204,9 @@ struct ProfileEditor: View {
                 add(to: \.dockApps, apps)
                 add(to: \.dockFolders, folders)
             }
+        }
+        .sheet(isPresented: $showingSuggestions) {
+            DockSuggestionsSheet(profile: profile) { apps in add(to: \.dockApps, apps) }
         }
     }
 
@@ -307,6 +311,9 @@ struct ProfileEditor: View {
             if profile.changesDock {
                 CardDivider()
                 SubsectionHeader(title: "Apps") {
+                    Button { showingSuggestions = true } label: { Label("Suggest", systemImage: "sparkles") }
+                        .buttonStyle(GlassCapsuleStyle())
+                        .help("Suggest apps for this profile from the ones on your Mac")
                     Button("Add from Current Dock…") { showingDockPicker = true }
                         .buttonStyle(GlassCapsuleStyle())
                     Button("Add Apps…") { add(to: \.dockApps, pick(types: [.application])) }
@@ -429,7 +436,7 @@ struct ProfileEditor: View {
 
 // MARK: - Building blocks
 
-private struct EditorBackground: View {
+struct EditorBackground: View {
     let tint: Color
 
     var body: some View {

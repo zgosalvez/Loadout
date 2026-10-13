@@ -15,6 +15,7 @@ https://github.com/user-attachments/assets/2f1369d0-5e69-404c-a2d8-19ffaa8f47e0
 ## Features
 
 - **A Dock per Focus.** Each profile holds its own Dock apps and folders, in your order. Start from what's in your Dock right now and tick only the ones you want.
+- **App suggestions.** Click **Suggest** and Loadout looks through the apps on your Mac and picks a Dock for the profile. On Macs with Apple Intelligence it uses Apple's on-device model, so your app list never leaves your Mac; elsewhere it picks by app category.
 - **Wallpaper that follows along.** Choose an image, use your current wallpaper, or drop any image onto the profile. It's set on every display.
 - **Three ways to switch.** A Focus Filter in System Settings, by hand from the menu bar, or the **Apply Loadout Profile** action in Shortcuts.
 - **Make it yours.** Give each profile a colour and an icon. The menu bar panel and editor take on its tint.
